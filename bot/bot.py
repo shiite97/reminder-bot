@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from telegram.ext import *
-import config
+from conf.config import token
 
 
 def start(bot, update):
@@ -15,7 +15,7 @@ def echo(bot, update):
     update.message.reply_text(update.message.text)
 
 
-updater = Updater(config.token)
+updater = Updater(token)
 
 updater.dispatcher.add_handler(CommandHandler('start', start))
 updater.dispatcher.add_handler(CommandHandler('stop', stop))
