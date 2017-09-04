@@ -12,14 +12,19 @@ def stop(bot, update):
 
 
 def echo(bot, update):
+    print('text')
+    print(update)
+    print(bot)
     update.message.reply_text(update.message.text)
 
 
 updater = Updater(token)
 
+
 updater.dispatcher.add_handler(CommandHandler('start', start))
 updater.dispatcher.add_handler(CommandHandler('stop', stop))
-updater.dispatcher.add_handler(MessageHandler('', echo))
+updater.dispatcher.add_handler(MessageHandler(Filters.text, echo))
+
 
 updater.start_polling()
 updater.idle()
